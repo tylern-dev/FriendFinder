@@ -12,10 +12,10 @@ app.get('/survey', function(req,res){
 })
 
 
-//404 page handling 
-// app.get('*',function(req, res){
-//     res.status(404).sendFile(path.join(__dirname, '../../app/public/404.html'))
-// })
+// 404 page handling 
+app.get('*',function(req, res){
+    res.status(404).sendFile(path.join(__dirname, '../../app/public/404.html'))
+})
 
 
 module.exports = app;

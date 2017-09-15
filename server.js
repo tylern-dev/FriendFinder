@@ -10,10 +10,14 @@ var router = require('./app/routing/htmlRoutes.js');
 //Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json"}))
+
 //static files css and js
 app.use(express.static(path.join(__dirname,'app/public')))
-app.use('/api', api);
+
 app.use('/',router);
+app.use('/api', api);
 
 
 app.listen(PORT, function(){
