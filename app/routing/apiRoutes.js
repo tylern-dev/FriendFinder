@@ -1,25 +1,29 @@
-var express = require('express')
-var app = express.Router();
-
-var path = require('path')
-var data = require(path.join(__dirname, '../../app/data/friends.js'))
+var path = require('path');
+var data = require(path.join(__dirname, '../../app/data/friends.js'));
 
 
-//we are declaring the /api/ part of /api/fiends in the server.js file
-app.get('/friends',function(req,res){
-    return res.json(data)
-})
 
-app.post('/friends',function(req, res){
-    var newSurvey = req.body;
-    console.log(newSurvey)
-    res.json(newSurvey)
-})
+//handles get and post routes to the friends data
+module.exports = function(app) {
+
+    app.get('/api/friends',function(req,res){
+        res.json(data)
+    });
+
+    app.post('/api/friends',function(req, res){
+        var newSurvey = req.body;
+        data.push(newSurvey);
+        
+        
+        
+    });
+
+}
+
 
 /* TO DO: */
-//send new survey to friends object
+
 //work on html
 //logic for determining friend compatibility
 
 
-module.exports = app;

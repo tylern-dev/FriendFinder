@@ -4,8 +4,7 @@ var path = require('path');
 var app = express();
 
 var PORT = process.env.PORT || 8080;
-var api = require('./app/routing/apiRoutes.js');
-var router = require('./app/routing/htmlRoutes.js');
+
 
 //Middleware
 app.use(bodyParser.json());
@@ -16,8 +15,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json"}))
 //static files css and js
 app.use(express.static(path.join(__dirname,'app/public')))
 
-app.use('/',router);
-app.use('/api', api);
+//link to files holding the routes 
+require(path.join(__dirname, '/app/routing/apiRoutes.js'))(app);
+require(path.join(__dirname, '/app/routing/htmlRoutes.js'))(app);
 
 
 app.listen(PORT, function(){
