@@ -15,9 +15,9 @@ module.exports = function(app) {
         // data.push(newSurvey);
         compare(data, newSurvey)
         res.json(newSurvey)
-        // console.log(newSurvey)
         
-        
+        // data.push(newSurvey)
+        // console.log(data)
     });
 
 }
@@ -26,7 +26,7 @@ module.exports = function(app) {
 function compare(existingData, newSurvey){
     
     var newSurveyScore = 0
-    var existingDataScore = 0
+    var totalScoreArray = [];
 
     //convert the scores array from string to integers
     var newScoresArray = newSurvey.scores.splice("").map(Number);
@@ -34,28 +34,29 @@ function compare(existingData, newSurvey){
     //loop through new array and add up scores
     for(var i = 0; i<newScoresArray.length; i++){
         newSurveyScore += newScoresArray[i]
-    }
-    
-    //MAYBE USE THIS
-    for(var key in existingData){
-        var obj = existingData[key];
-        for ( var prop in obj){
-            if(obj.hasOwnProperty(prop)){
-                console.log(obj)
-            }
-        }
         
-
-        console.log('prop '+obj)
     }
+    console.log(newSurveyScore)
 
-    console.log('existing data '+ existingData[0].scores)
+    //loops through the scores of the existing data in the object array and pushes the total score to totalScoreArray
+    for(var i = 0; i<existingData.length; i++){
+        var existingSum = existingData[i].scores.reduce(add,0)
+        totalScoreArray.push(existingSum);
+    }
+    console.log(totalScoreArray)
     
-
-
+    //subtracting number in total score array from the newSurveyScore
+    for(var i =0; i<totalScoreArray.length; i++){
+        console.log(Math.abs(totalScoreArray[i] - newSurveyScore))
+    }
+    
 
     //might need to push the data to the array at the end of this function
     // data.push(newSurvey)
+}
+
+function add(a,b){
+    return a+b
 }
 
 /* TO DO: */
@@ -64,3 +65,4 @@ function compare(existingData, newSurvey){
 //logic for determining friend compatibility
 
 
+//TEST COMPARE LOGIC
