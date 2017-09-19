@@ -45,23 +45,32 @@
         $('#submit').on('click', function(event){
             event.preventDefault();
 
+            
             name = $('#form-name').val().trim();
             photo = $('#form-photo').val().trim();
             scores = [];
 
-            var newData = new NewSurvey(name, photo, scores)
-
-            //grabs the values from the selects and pushes it to the scores array
-            $('select :selected').each(function(){
-                var numValue = parseInt(this.value)
-                scores.push(numValue);
-                console.log(scores)
-            })
-
-
-            $.post("/api/friends", newData, function(result){
-                console.log(result)
-            });
+            //validating form fields
+            if(name === ""){
+                alert('Please enter your name before submitting.')
+            }
+            else if(photo === ""){
+                alert('Please enter a url to your photo')
+            }
+            else{
+                //uses the constructor to build the object
+                var newData = new NewSurvey(name, photo, scores)
+    
+                //grabs the values from the selects and pushes it to the scores array
+                $('select :selected').each(function(){
+                    var numValue = parseInt(this.value)
+                    scores.push(numValue);
+                })
+                //POST REQUEST
+                $.post("/api/friends", newData, function(result){
+                    console.log(result)
+                });
+            }
         });
     }
 

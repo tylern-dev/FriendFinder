@@ -1,3 +1,7 @@
 .form-input{
     display: block;
 }
+
+#submit{
+    margin-bottom: 25px;
+}
