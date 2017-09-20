@@ -2,7 +2,7 @@ var friends = [
     {
         name: "Isaac",
         photo: "https://cdn.pixabay.com/photo/2016/05/23/23/32/human-1411499_1280.jpg",
-        scores: [3,4,5,1,3,4,2,4,3,5]
+        scores: [3,4,1,1,3,1,2,4,5,5]
     },
     {
         name: "Jacob",
@@ -17,7 +17,7 @@ var friends = [
     {
         name: "John",
         photo: "https://cdn.pixabay.com/photo/2014/05/22/16/57/face-351281_1280.jpg",
-        scores: [2,4,5,1,3,4,3,5,3,5]
+        scores: [1,1,2,1,2,4,3,2,3,3]
     },
     {
         name: "Billy",
@@ -27,7 +27,7 @@ var friends = [
     {
         name: "Sara",
         photo: "https://cdn.pixabay.com/photo/2014/11/05/20/43/girl-518331_1280.jpg",
-        scores: [3,5,5,3,2,4,3,5,3,3]
+        scores: [3,2,5,3,2,4,3,2,3,3]
     }
 ];
 

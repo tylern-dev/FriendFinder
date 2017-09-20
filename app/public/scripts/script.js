@@ -19,7 +19,7 @@
     for(let [index, val] of questions.entries()){
         $('#survey-questions').append(
             `<div class = "form-group">`+
-            `<h3>Question ${index+1}`+
+            `<h3><strong>Question ${index+1}`+
             `<h4>${val}</h4>`+
             `<select class="form-control col-2" id=q${index+1}>`+
             `<option value="1">1 Never`+
@@ -69,6 +69,9 @@
                 //POST REQUEST
                 $.post("/api/friends", newData, function(result){
                     console.log(result)
+                    $("#match-name").text(result.name);
+                    $("#match-img").attr("src", result.photo);
+                    $('#survey-results').modal("toggle")
                 });
             }
         });

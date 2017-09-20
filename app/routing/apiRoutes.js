@@ -36,6 +36,7 @@ function compare(existingData, newSurvey){
     for(var i = 0; i<existingData.length; i++){
         var existingSum = existingData[i].scores.reduce(add,0)
         totalScoreArray.push(existingSum);
+        console.log('existing '+existingSum)
     }
     // console.log(totalScoreArray)
 
