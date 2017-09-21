@@ -39,8 +39,6 @@
     }
 
     function getValues(){
-        
-        
         //handles what happens when the submit button is clicked
         $('#submit').on('click', function(event){
             event.preventDefault();
@@ -71,6 +69,7 @@
                     console.log(result)
                     $("#match-name").text(result.name);
                     $("#match-img").attr("src", result.photo);
+                    //activates the modal
                     $('#survey-results').modal("toggle")
                 });
             }
